@@ -1,5 +1,6 @@
 # Elk-Pro-Cyb
 Northwestern Cyber Security Elk project
+
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
@@ -73,31 +74,37 @@ The playbook implements the following tasks:
 - Install _docker.io_ that is used for running containers; _python3-pip_ used to install Python software; _docker_ required to control state of Docker containers
 - Download the Docker container _sebp/elk:761_
 - Configure the container to be accessed by the following ports _5601, 9200, 5044_
+
+- ...
+
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
-
+![TODO: /Elk-Pro-Cyb/Images/docker_ps.png
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 - _TODO: List the IP addresses of the machines you are monitoring_
-
+10.0.0.5
+10.0.0.6
+10.0.0.7
 We have installed the following Beats on these machines:
 - _TODO: Specify which Beats you successfully installed_
-
+Filebeat
+Metricbeat
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
-
+Filebeat collects file logs and forwards them to either Elasticsearch or Logstash for further indexing.
+Metricbeat monitors and collects metrics from the servers and ships them to an Elasticsearch or Logstash for further inspection. 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the hosts file to my ansible.
+- Update the host file to include my ELK VM IP (10.1.0.4)...
+- Run the playbook, and navigate to Kibana to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- _Which file is the playbook? Where do you copy it? The file is the install-elk.yml_
+- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on? I run the command ansible-playbook install-elk.yml _
+- _Which URL do you navigate to in order to check that the ELK server is running? curl localhost:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
